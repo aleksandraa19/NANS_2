@@ -155,7 +155,7 @@ plt.title('Grafikon reziduala')
 plt.show()
 
 #predvidjanje 5
-y5 = podaci['min_life_expectancy']
+y5 = podaci['max_life_expectancy']
 x5 = podaci[['max_height_male','max_weight_male','min_height_male','min_weight_male']]
 
 x5_train, x5_test, y5_train, y5_test = train_test_split(x5, y5, test_size=0.2, shuffle=True,random_state=42)
