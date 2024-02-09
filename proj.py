@@ -107,31 +107,7 @@ plt.ylabel('Predviđeni minimalni životni vek')
 plt.title('Predikcija minimalnog životnog veka pasa (Lasso regresija)')
 plt.show()
 
-# trainability Belgian Malinois
-# Izdvajanje podataka samo za odredjenu rasu
-belgian_malinois_data = podaci[podaci['Name'] == 'Belgian Malinois']
-
-# Izdvajanje ulaznih atributa i ciljnog atributa
-x3 = belgian_malinois_data[['good_with_children','good_with_other_dogs','shedding','grooming','drooling','good_with_strangers','playfulness','protectiveness','barking','energy']]  # Primer ulaznih atributa
-y3 = belgian_malinois_data['trainability']
-
-# Kreiranje i fitovanje modela
-model = LinearRegression()
-model.fit(x3, y3)
-
-# Predviđanje
-y3_pred = model.predict(x3)
-
-print(f'Predvidjena vrednost je: {y3_pred[0]:.2f}')
-print(f'vrednost u tabeli je: {y3.iloc[0]: .2f}')
-# Evaluacija modela
-# rmse = mean_squared_error(y3, y3_pred, squared=False)
-# print("RMSE:", rmse)
-
-# sb.scatterplot(data=belgian_malinois_data, x='good_with_children', y=y3)
-# plt.plot(x3, y3_pred, 'b', label='regresija')
-# plt.legend(title='predvidjanje')
-# plt.show()
+#prosek i broj pasa
 df = podaci.copy()
 df['avg_life_expectancy'] = (df['min_life_expectancy'] + df['max_life_expectancy']) / 2
 
