@@ -153,3 +153,29 @@ plt.ylabel('Reziduali')
 plt.axhline(y=0, color='r', linestyle='-')
 plt.title('Grafikon reziduala')
 plt.show()
+
+#predvidjanje 5
+y5 = podaci['min_life_expectancy']
+x5 = podaci[['max_height_male','max_weight_male','min_height_male','min_weight_male']]
+
+x5_train, x5_test, y5_train, y5_test = train_test_split(x5, y5, test_size=0.2, shuffle=True,random_state=42)
+
+model5 = LinearRegression()
+model5.fit(x5_train, y5_train)
+
+# Predviđanje na test skupu
+y5_pred = model5.predict(x5_test)
+# Evaluacija modela
+mse = get_mse(y5_test, y5_pred)
+print("Mean Squared Error:", mse)
+
+
+# Vizualizacija
+residuals5 = y5_test - y5_pred
+plt.scatter(y5_pred, residuals5, c = 'blue')
+plt.xlabel('Predviđene vrednosti')
+plt.ylabel('Reziduali')
+plt.axhline(y=0, color='red', linestyle='-')
+plt.title('Grafikon reziduala')
+plt.show()
+
